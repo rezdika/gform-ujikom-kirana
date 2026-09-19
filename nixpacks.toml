@@ -10,4 +10,4 @@ cmds = [
 ]
 
 [start]
-cmd = "php artisan migrate --force --skip-existing && php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "php artisan migrate --force 2>/dev/null || true && php artisan serve --host=0.0.0.0 --port=$PORT"
