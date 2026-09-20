@@ -156,12 +156,13 @@
         .showcase-box{
             background:var(--dark3);border:1px solid rgba(177,143,106,0.15);
             padding:2rem;margin-bottom:2.5rem;
+            overflow:visible;
         }
         .showcase-label{font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
         .anim-stage{
             width:100%;aspect-ratio:16/9;background:var(--dark);
             display:flex;align-items:center;justify-content:center;
-            position:relative;overflow:hidden;border:1px solid rgba(177,143,106,0.1);
+            position:relative;overflow:visible;border:1px solid rgba(177,143,106,0.1);
         }
         .anim-ring{
             width:70px;height:70px;border-radius:50%;border:1px solid transparent;
@@ -175,6 +176,22 @@
         .anim-center-dot{
             width:6px;height:6px;background:var(--gold);border-radius:50%;
             position:absolute;animation:pulse 2s ease-in-out infinite;
+        }
+        .char-stage{
+            position:absolute;
+            top:-120px;
+            right:-30px;
+            height:70%;
+            pointer-events:none;
+            z-index:2;
+            opacity:0.95;
+        }
+        @media(min-width:769px){
+            .char-stage{
+                height:25%;
+                top:-130px;
+                right:-20px;
+            }
         }
         .anim-text-overlay{
             position:absolute;bottom:1rem;font-size:0.55rem;
@@ -265,7 +282,32 @@
         .footer-credit{font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:rgba(177,143,106,0.5);}
         .footer-credit span{color:var(--gold-light);}
 
+        /* ── CHARACTERS ── */
+        .char{
+            position:absolute;
+            pointer-events:none;
+            z-index:0;
+            left:50%;
+            transform:translateX(-50%);
+            bottom:0;
+        }
+        .char-hero{
+            height:75vh;
+            opacity:0.12;
+        }
+        .char-creator{
+            height:380px;
+            opacity:0.08;
+        }
+        .char-form{
+            height:350px;
+            opacity:0.08;
+        }
         @media(max-width:768px){
+            .char-hero{height:50vh;opacity:0.12;}
+            .char-creator{height:280px;opacity:0.08;}
+            .char-form{height:260px;opacity:0.08;}
+        }
             .creator-layout,.form-layout{grid-template-columns:1fr;}
             .hero-bottom-bar{padding:1.5rem;}
             #creator::before,#form::before{display:none;}
@@ -279,11 +321,12 @@
     <div class="hero-bg-line"></div>
     <div class="hero-bg-line2"></div>
     <div class="hero-bg-line3"></div>
+    <img src="/assets/image/character/kirana merch.png" class="char char-hero" alt="Kirana">
     <div class="hero-inner">
         <div class="hero-eyebrow">KVlov — Ujikom 2026</div>
         <h1 class="hero-title"><em>Experience</em><br>&amp; Feedback</h1>
         <p class="hero-title-sub">Kesan &amp; Pesan</p>
-        <p class="hero-desc">Bagikan pengalaman kamu bersama stand KVlov. Setiap kata adalah apresiasi yang berarti.</p>
+        <p class="hero-desc">Bagikan pengalaman kamu bersama Kirana vilova alwaysha putri aji. Setiap kata adalah apresiasi yang berarti.</p>
         <a href="#creator" class="hero-scroll">
             <div class="scroll-line"></div>
             <span>Scroll</span>
@@ -330,6 +373,7 @@
                     <div class="anim-ring"></div>
                     <div class="anim-center-dot"></div>
                     <p class="anim-text-overlay">KVlov Animation Studio</p>
+                    <img src="/assets/image/character/akbar merch.png" class="char-stage" alt="Akbar">
                 </div>
             </div>
             <div class="socials-row">
@@ -342,6 +386,7 @@
 
 <!-- FORM -->
 <section id="form">
+    <img src="/assets/image/character/devan merch.png" class="char char-form" alt="Devan">
     <div class="section-header">
         <span class="section-num">02</span>
         <div class="section-line"></div>
