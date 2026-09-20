@@ -179,8 +179,8 @@
         }
         .char-stage{
             position:absolute;
-            top:-120px;
-            right:-30px;
+            top:-115px;
+            right:-40px;
             height:70%;
             pointer-events:none;
             z-index:2;
@@ -263,7 +263,7 @@
 
         /* ── FOOTER ── */
         footer{
-            background:var(--dark) url('/assets/image/bg/bg1.png') center/cover no-repeat;
+            background:var(--dark) url('/assets/image/character/merch-display-1.png') 70% center/85% auto no-repeat;
             border-top:1px solid rgba(177,143,106,0.2);
             padding:5rem 2rem 3rem;text-align:center;position:relative;overflow:hidden;
         }
@@ -321,7 +321,7 @@
     <div class="hero-bg-line"></div>
     <div class="hero-bg-line2"></div>
     <div class="hero-bg-line3"></div>
-    <img src="/assets/image/character/kirana merch.png" class="char char-hero" alt="Kirana">
+    <img src="/assets/image/character/merch-display-2.png" class="char char-hero" alt="Kirana">
     <div class="hero-inner">
         <div class="hero-eyebrow">KVlov — Ujikom 2026</div>
         <h1 class="hero-title"><em>Experience</em><br>&amp; Feedback</h1>
@@ -386,7 +386,7 @@
 
 <!-- FORM -->
 <section id="form">
-    <img src="/assets/image/character/devan merch.png" class="char char-form" alt="Devan">
+    <img src="/assets/image/character/kirana merch.png" class="char char-form" alt="Devan">
     <div class="section-header">
         <span class="section-num">02</span>
         <div class="section-line"></div>
@@ -443,7 +443,7 @@
 <!-- FOOTER -->
 <footer>
     <div class="footer-inner">
-        <div class="footer-ornament">✦ ✦ ✦</div>
+       
         <h3 class="footer-title">HaNuPis! hatur nuhun pisan sadayana!</h3>
         <p class="footer-sub">Enjoy your life and our work thank you again for coming</p>
         <div class="footer-divider"></div>
