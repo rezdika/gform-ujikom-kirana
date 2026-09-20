@@ -181,7 +181,7 @@
             position:absolute;
             top:-115px;
             right:-40px;
-            height:70%;
+            height:60%;
             pointer-events:none;
             z-index:2;
             opacity:0.95;
