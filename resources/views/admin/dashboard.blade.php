@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Dashboard — KVlov Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -27,38 +27,62 @@
             display:flex;
             align-items:center;
             justify-content:space-between;
+            position:sticky;top:0;z-index:100;
         }
-        .nav-brand{
-            font-family:var(--serif);
-            font-size:1.5rem;
-            font-weight:300;
-            font-style:italic;
-            color:var(--gold);
-        }
-        .nav-right{
-            display:flex;
-            align-items:center;
-            gap:2rem;
-        }
-        .nav-user{
-            font-size:0.62rem;
-            letter-spacing:2px;
-            text-transform:uppercase;
-            color:var(--muted);
-        }
+        .nav-brand{font-family:var(--serif);font-size:1.5rem;font-weight:300;font-style:italic;color:var(--gold);}
+        .nav-right{display:flex;align-items:center;gap:2rem;}
+        .nav-user{font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+        .nav-links-desktop{display:flex;align-items:center;gap:2rem;}
+        .nav-links-desktop a{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+        .nav-links-desktop a:hover,.nav-links-desktop a.active{color:var(--gold);}
         .logout-btn{
-            background:transparent;
-            border:1px solid rgba(201,168,76,0.3);
-            color:var(--gold);
-            font-family:var(--sans);
-            font-size:0.58rem;
-            letter-spacing:3px;
-            text-transform:uppercase;
-            padding:0.6rem 1.2rem;
-            cursor:pointer;
-            transition:all 0.3s;
+            background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold);
+            font-family:var(--sans);font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;
+            padding:0.6rem 1.2rem;cursor:pointer;transition:all 0.3s;
         }
         .logout-btn:hover{background:var(--gold);color:var(--dark);}
+        .hamburger{
+            display:none;background:transparent;border:none;
+            color:var(--gold);font-size:1.2rem;cursor:pointer;padding:0.3rem;
+        }
+        /* SIDEBAR */
+        .sidebar-overlay{
+            display:none;position:fixed;inset:0;
+            background:rgba(0,0,0,0.6);z-index:200;
+        }
+        .sidebar-overlay.open{display:block;}
+        .sidebar{
+            position:fixed;top:0;left:-280px;width:260px;height:100vh;
+            background:var(--dark2);border-right:1px solid rgba(201,168,76,0.15);
+            z-index:201;transition:left 0.3s ease;padding:2rem 1.5rem;
+            display:flex;flex-direction:column;gap:0;
+        }
+        .sidebar.open{left:0;}
+        .sidebar-header{
+            display:flex;align-items:center;justify-content:space-between;
+            margin-bottom:2.5rem;
+        }
+        .sidebar-brand{font-family:var(--serif);font-size:1.4rem;font-weight:300;font-style:italic;color:var(--gold);}
+        .sidebar-close{background:transparent;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer;}
+        .sidebar-close:hover{color:var(--gold);}
+        .sidebar-nav{display:flex;flex-direction:column;gap:0.3rem;}
+        .sidebar-nav a{
+            display:flex;align-items:center;gap:1rem;
+            font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;
+            color:var(--muted);text-decoration:none;padding:1rem 1.2rem;
+            border:1px solid transparent;transition:all 0.3s;
+        }
+        .sidebar-nav a:hover,.sidebar-nav a.active{
+            color:var(--gold);border-color:rgba(201,168,76,0.2);
+            background:rgba(201,168,76,0.05);
+        }
+        .sidebar-nav a i{width:16px;text-align:center;font-size:0.75rem;}
+        .sidebar-logout{
+            background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold);
+            font-family:var(--sans);font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;
+            padding:0.8rem;cursor:pointer;transition:all 0.3s;width:100%;margin-top:1rem;
+        }
+        .sidebar-logout:hover{background:var(--gold);color:var(--dark);}
 
         main{padding:4rem 3rem;max-width:1200px;margin:0 auto;}
 
@@ -240,19 +264,42 @@
             .entry-num{display:none;}
             .entry-fields{grid-template-columns:1fr;}
             .stat-cards{grid-template-columns:1fr;}
+            .hamburger{display:block;}
+            .nav-links-desktop,.nav-user,.logout-btn{display:none;}
         }
     </style>
 </head>
 <body>
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <span class="sidebar-brand">KVlov</span>
+        <button class="sidebar-close" onclick="closeSidebar()"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="{{ route('admin.dashboard') }}" class="active"><i class="fas fa-inbox"></i> Dashboard</a>
+        <a href="{{ route('admin.statistik') }}"><i class="fas fa-chart-bar"></i> Statistik</a>
+    </nav>
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="sidebar-logout"><i class="fas fa-sign-out-alt"></i> &nbsp;Logout</button>
+    </form>
+</div>
+
     <nav>
         <span class="nav-brand">KVlov</span>
+        <div class="nav-links-desktop">
+            <a href="{{ route('admin.dashboard') }}" class="active">Dashboard</a>
+            <a href="{{ route('admin.statistik') }}">Statistik</a>
+        </div>
         <div class="nav-right">
-            <a href="{{ route('admin.statistik') }}" style="font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='#6b6b6b'">Statistik</a>
             <span class="nav-user">Admin Panel</span>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
+            <button class="hamburger" onclick="openSidebar()"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
@@ -326,5 +373,15 @@
         </div>
         @endif
     </main>
+<script>
+    function openSidebar(){
+        document.getElementById('sidebar').classList.add('open');
+        document.getElementById('overlay').classList.add('open');
+    }
+    function closeSidebar(){
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('overlay').classList.remove('open');
+    }
+</script>
 </body>
 </html>
