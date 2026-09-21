@@ -116,7 +116,7 @@
         }
         .section-num{font-family:var(--serif);font-size:0.75rem;color:var(--gold);letter-spacing:2px;}
         .section-line{width:60px;height:1px;background:var(--gold);}
-        .section-label-text{font-size:0.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);}
+        .section-label-text{font-size:0.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);font-weight:600;}
         .section-big-title{
             font-family:var(--serif);font-size:clamp(2.5rem,5vw,5rem);
             font-weight:300;line-height:1.1;color:var(--cream);
@@ -220,30 +220,30 @@
         }
         .form-left-title{
             font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);
-            font-weight:300;line-height:1.2;color:var(--accent);margin-bottom:2rem;
+            font-weight:700;line-height:1.2;color:var(--dark);margin-bottom:2rem;
         }
-        .form-left-title em{font-style:italic;color:var(--gold);}
+        .form-left-title em{font-style:italic;color:var(--gold);font-weight:700;}
         .form-left-desc{
-            font-size:0.78rem;font-weight:300;line-height:2;
-            color:var(--accent);letter-spacing:0.5px;margin-bottom:3rem;opacity:0.7;
+            font-size:0.82rem;font-weight:400;line-height:2;
+            color:var(--dark);letter-spacing:0.5px;margin-bottom:3rem;opacity:0.85;
         }
         .form-divider{width:40px;height:1px;background:var(--gold);margin-bottom:2rem;}
-        .form-note{font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+        .form-note{font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--dark);font-weight:600;}
         .field-group{margin-bottom:2rem;}
         .field-group label{
             display:block;font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;
-            color:var(--gold);margin-bottom:0.8rem;font-family:var(--sans);
+            color:var(--dark);margin-bottom:0.8rem;font-family:var(--sans);font-weight:600;
         }
         .field-group input,.field-group textarea{
             width:100%;background:transparent;border:none;
-            border-bottom:1px solid rgba(177,143,106,0.35);
-            padding:0.8rem 0;color:var(--accent);
-            font-family:var(--serif);font-size:1rem;font-weight:300;
+            border-bottom:1px solid rgba(44,31,20,0.4);
+            padding:0.8rem 0;color:var(--dark);
+            font-family:var(--serif);font-size:1rem;font-weight:400;
             outline:none;transition:border-color 0.3s;resize:none;
         }
         .field-group input:focus,.field-group textarea:focus{border-bottom-color:var(--gold);}
         .field-group input::placeholder,.field-group textarea::placeholder{
-            color:rgba(111,78,55,0.35);font-style:italic;
+            color:rgba(44,31,20,0.35);font-style:italic;
         }
         .error-msg{font-size:0.65rem;color:#c0392b;letter-spacing:1px;margin-top:0.4rem;}
         .submit-btn{
@@ -277,7 +277,17 @@
             font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.5rem);
             font-weight:300;font-style:italic;color:var(--cream);margin-bottom:1rem;
         }
-        .footer-sub{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:3rem;}
+        .footer-sub{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;}
+        .footer-socials{display:flex;justify-content:center;gap:2rem;margin-bottom:3rem;}
+        .footer-socials a{
+            display:flex;align-items:center;gap:0.6rem;
+            color:var(--gold-light);text-decoration:none;
+            font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;
+            border:1px solid rgba(177,143,106,0.3);padding:0.6rem 1.2rem;
+            transition:all 0.3s;
+        }
+        .footer-socials a:hover{background:rgba(177,143,106,0.15);border-color:var(--gold);color:var(--gold);}
+        .footer-socials a i{font-size:0.9rem;}
         .footer-divider{width:60px;height:1px;background:rgba(177,143,106,0.3);margin:0 auto 2rem;}
         .footer-credit{font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:rgba(177,143,106,0.5);}
         .footer-credit span{color:var(--gold-light);}
@@ -446,6 +456,14 @@
        
         <h3 class="footer-title">HaNuPis! hatur nuhun pisan sadayana!</h3>
         <p class="footer-sub">Enjoy your life and our work thank you again for coming</p>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/kirvlova._/" target="_blank">
+                <i class="fab fa-instagram"></i> @kirvlova._
+            </a>
+            <a href="https://www.tiktok.com/@kvaxsyll_" target="_blank">
+                <i class="fab fa-tiktok"></i> @kvaxsyll_
+            </a>
+        </div>
         <div class="footer-divider"></div>
         <p class="footer-credit">
             © {{ date('Y') }} &nbsp;·&nbsp; Designed &amp; Animated by <span>Kirana Vilova Alwaysha Putri Aji</span>

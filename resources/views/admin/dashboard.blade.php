@@ -82,31 +82,60 @@
         }
         .page-title em{font-style:italic;color:var(--gold);}
 
-        .stat-bar{
-            display:flex;
-            align-items:center;
-            gap:3rem;
+        .stat-cards{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:1.5rem;
+            margin-bottom:3rem;
+        }
+        .stat-card{
             padding:2rem 2.5rem;
             border:1px solid rgba(201,168,76,0.15);
             background:var(--dark2);
-            margin-bottom:3rem;
         }
-        .stat-num{
+        .stat-card-num{
             font-family:var(--serif);
             font-size:3.5rem;
             font-weight:300;
             color:var(--gold);
             line-height:1;
+            margin-bottom:0.8rem;
         }
-        .stat-divider{width:1px;height:50px;background:rgba(201,168,76,0.2);}
-        .stat-label{
-            font-size:0.62rem;
+        .stat-card-label{
+            font-size:0.58rem;
             letter-spacing:3px;
             text-transform:uppercase;
             color:var(--muted);
         }
+        .stat-card-icon{
+            font-size:0.9rem;
+            color:rgba(201,168,76,0.3);
+            margin-bottom:1rem;
+        }
 
-        .empty-state{
+        .delete-btn{
+            background:transparent;
+            border:1px solid rgba(201,168,76,0.2);
+            color:rgba(201,168,76,0.5);
+            font-family:var(--sans);
+            font-size:0.55rem;
+            letter-spacing:2px;
+            text-transform:uppercase;
+            padding:0.4rem 0.9rem;
+            cursor:pointer;
+            transition:all 0.3s;
+        }
+        .delete-btn:hover{border-color:#c0392b;color:#c0392b;background:rgba(192,57,43,0.08);}
+        .alert-deleted{
+            background:transparent;
+            border:1px solid rgba(192,57,43,0.4);
+            color:rgba(245,240,232,0.7);
+            padding:0.8rem 1.5rem;
+            font-size:0.7rem;
+            letter-spacing:1px;
+            margin-bottom:2rem;
+            display:flex;align-items:center;gap:0.8rem;
+        }
             text-align:center;
             padding:6rem 2rem;
             border:1px solid rgba(201,168,76,0.1);
@@ -210,6 +239,7 @@
             .entry{grid-template-columns:1fr;gap:1rem;}
             .entry-num{display:none;}
             .entry-fields{grid-template-columns:1fr;}
+            .stat-cards{grid-template-columns:1fr;}
         }
     </style>
 </head>
@@ -217,6 +247,7 @@
     <nav>
         <span class="nav-brand">KVlov</span>
         <div class="nav-right">
+            <a href="{{ route('admin.statistik') }}" style="font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='#6b6b6b'">Statistik</a>
             <span class="nav-user">Admin Panel</span>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -231,11 +262,27 @@
             <h1 class="page-title">Semua <em>Pesan</em></h1>
         </div>
 
-        <div class="stat-bar">
-            <div class="stat-num">{{ $pesan->count() }}</div>
-            <div class="stat-divider"></div>
-            <div class="stat-label">Total Pesan<br>Masuk</div>
+        <div class="stat-cards">
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="fas fa-inbox"></i></div>
+                <div class="stat-card-num">{{ $total }}</div>
+                <div class="stat-card-label">Total Pesan Masuk</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="fas fa-calendar-day"></i></div>
+                <div class="stat-card-num">{{ $hari_ini }}</div>
+                <div class="stat-card-label">Pesan Hari Ini</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="stat-card-num">{{ $dengan_saran }}</div>
+                <div class="stat-card-label">Dengan Saran</div>
+            </div>
         </div>
+
+        @if(session('deleted'))
+        <div class="alert-deleted"><i class="fas fa-trash"></i> {{ session('deleted') }}</div>
+        @endif
 
         @if($pesan->isEmpty())
         <div class="empty-state">
@@ -253,6 +300,10 @@
                         <div class="entry-meta">
                             <span class="entry-kelas">{{ $p->kelas_jurusan }}</span>
                             <span class="entry-time">{{ $p->created_at->format('d M Y · H:i') }}</span>
+                            <form method="POST" action="{{ route('admin.pesan.destroy', $p->id) }}" onsubmit="return confirm('Hapus pesan ini?')">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="delete-btn"><i class="fas fa-trash"></i> Hapus</button>
+                            </form>
                         </div>
                     </div>
                     <div class="entry-fields">
