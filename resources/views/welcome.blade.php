@@ -334,8 +334,8 @@
             <span>D</span><span>a</span><span>n</span><span>.</span><span>.</span><span>.</span>
         </div>
         <picture>
-            <source srcset="/assets/image/poster/postermwcoffe.webp" type="image/webp">
-            <img src="/assets/image/poster/postermwcoffe.png" alt="Poster MW Coffee" class="splash-poster">
+            <source srcset="/assets/image/poster/postermwcoffee.webp" type="image/webp">
+            <img src="/assets/image/poster/postermwcoffee.webp" alt="Poster MW Coffee" class="splash-poster">
         </picture>
         <div class="splash-text-right">
             <span>B</span><span>a</span><span>n</span><span>d</span><span>u</span><span>n</span><span>g</span>
