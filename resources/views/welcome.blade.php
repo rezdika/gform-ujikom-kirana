@@ -364,8 +364,6 @@
     height:60vh;max-height:500px;max-width:55vw;
     object-fit:contain;
     animation:posterReveal 0.8s ease 0.3s both;
-    border:1px solid rgba(177,143,106,0.2);
-    box-shadow:0 0 60px rgba(177,143,106,0.15);
 }
 @media(max-width:600px){
     .splash-content{gap:0.8rem;}
