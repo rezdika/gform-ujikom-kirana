@@ -357,11 +357,16 @@
     gap:2rem;position:relative;z-index:1;
 }
 .splash-poster{
-    height:60vh;max-height:500px;max-width:80vw;
+    height:60vh;max-height:500px;max-width:60vw;
     object-fit:contain;
     animation:posterReveal 0.8s ease 0.3s both;
     border:1px solid rgba(177,143,106,0.2);
     box-shadow:0 0 60px rgba(177,143,106,0.15);
+}
+@media(max-width:600px){
+    .splash-content{flex-direction:column;gap:1rem;}
+    .splash-poster{height:50vh;max-width:85vw;}
+    .splash-text-left,.splash-text-right{flex-direction:row;gap:0.2rem;}
 }
 .splash-text-left,.splash-text-right{
     display:flex;flex-direction:column;gap:0.3rem;
