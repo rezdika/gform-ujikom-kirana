@@ -349,7 +349,7 @@
     position:fixed;inset:0;z-index:9999;
     background:var(--dark);display:flex;flex-direction:column;
     align-items:center;justify-content:center;
-    animation:splashFade 0.6s ease 2.5s forwards;
+    animation:splashFade 0.8s ease 4.5s forwards;
 }
 .splash-bg{
     position:absolute;inset:0;
