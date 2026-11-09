@@ -326,6 +326,83 @@
 </head>
 <body>
 
+<!-- SPLASH SCREEN -->
+<div id="splash">
+    <div class="splash-bg"></div>
+    <div class="splash-content">
+        <div class="splash-text-left">
+            <span>D</span><span>a</span><span>n</span><span>.</span><span>.</span><span>.</span>
+        </div>
+        <img src="/assets/image/poster/postermwcoffe.png" alt="Poster MW Coffee" class="splash-poster">
+        <div class="splash-text-right">
+            <span>B</span><span>a</span><span>n</span><span>d</span><span>u</span><span>n</span><span>g</span>
+        </div>
+    </div>
+    <div class="splash-bottom">MW Coffee — KVlov Animation</div>
+</div>
+
+<style>
+#splash{
+    position:fixed;inset:0;z-index:9999;
+    background:var(--dark);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    animation:splashFade 0.6s ease 3.2s forwards;
+}
+.splash-bg{
+    position:absolute;inset:0;
+    background:radial-gradient(ellipse at center,rgba(177,143,106,0.08) 0%,transparent 70%);
+}
+.splash-content{
+    display:flex;align-items:center;justify-content:center;
+    gap:2rem;position:relative;z-index:1;
+}
+.splash-poster{
+    height:60vh;max-height:500px;max-width:80vw;
+    object-fit:contain;
+    animation:posterReveal 0.8s ease 0.3s both;
+    border:1px solid rgba(177,143,106,0.2);
+    box-shadow:0 0 60px rgba(177,143,106,0.15);
+}
+.splash-text-left,.splash-text-right{
+    display:flex;flex-direction:column;gap:0.3rem;
+}
+.splash-text-left span,.splash-text-right span{
+    font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.5rem);
+    font-weight:300;font-style:italic;color:var(--gold);
+    opacity:0;animation:charReveal 0.4s ease forwards;
+}
+.splash-text-left span:nth-child(1){animation-delay:0.8s}
+.splash-text-left span:nth-child(2){animation-delay:1.0s}
+.splash-text-left span:nth-child(3){animation-delay:1.2s}
+.splash-text-left span:nth-child(4){animation-delay:1.4s}
+.splash-text-left span:nth-child(5){animation-delay:1.5s}
+.splash-text-left span:nth-child(6){animation-delay:1.6s}
+.splash-text-right span:nth-child(1){animation-delay:0.9s}
+.splash-text-right span:nth-child(2){animation-delay:1.1s}
+.splash-text-right span:nth-child(3){animation-delay:1.3s}
+.splash-text-right span:nth-child(4){animation-delay:1.5s}
+.splash-text-right span:nth-child(5){animation-delay:1.7s}
+.splash-text-right span:nth-child(6){animation-delay:1.9s}
+.splash-text-right span:nth-child(7){animation-delay:2.1s}
+.splash-bottom{
+    position:absolute;bottom:2rem;
+    font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;
+    color:rgba(177,143,106,0.4);font-family:var(--sans);
+    animation:charReveal 0.5s ease 2s both;
+}
+@keyframes posterReveal{
+    from{opacity:0;transform:scale(0.92);}
+    to{opacity:1;transform:scale(1);}
+}
+@keyframes charReveal{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
+}
+@keyframes splashFade{
+    to{opacity:0;pointer-events:none;visibility:hidden;}
+}
+</style>
+
 <!-- HERO -->
 <section id="hero">
     <div class="hero-bg-line"></div>
