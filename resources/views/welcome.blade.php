@@ -333,7 +333,10 @@
         <div class="splash-text-left">
             <span>D</span><span>a</span><span>n</span><span>.</span><span>.</span><span>.</span>
         </div>
-        <img src="/assets/image/poster/postermwcoffe.png" alt="Poster MW Coffee" class="splash-poster">
+        <picture>
+            <source srcset="/assets/image/poster/postermwcoffe.webp" type="image/webp">
+            <img src="/assets/image/poster/postermwcoffe.png" alt="Poster MW Coffee" class="splash-poster">
+        </picture>
         <div class="splash-text-right">
             <span>B</span><span>a</span><span>n</span><span>d</span><span>u</span><span>n</span><span>g</span>
         </div>
@@ -346,7 +349,7 @@
     position:fixed;inset:0;z-index:9999;
     background:var(--dark);display:flex;flex-direction:column;
     align-items:center;justify-content:center;
-    animation:splashFade 0.6s ease 3.2s forwards;
+    animation:splashFade 0.6s ease 2.5s forwards;
 }
 .splash-bg{
     position:absolute;inset:0;
@@ -354,19 +357,20 @@
 }
 .splash-content{
     display:flex;align-items:center;justify-content:center;
-    gap:2rem;position:relative;z-index:1;
+    gap:1.5rem;position:relative;z-index:1;
+    padding:0 1rem;
 }
 .splash-poster{
-    height:60vh;max-height:500px;max-width:60vw;
+    height:60vh;max-height:500px;max-width:55vw;
     object-fit:contain;
     animation:posterReveal 0.8s ease 0.3s both;
     border:1px solid rgba(177,143,106,0.2);
     box-shadow:0 0 60px rgba(177,143,106,0.15);
 }
 @media(max-width:600px){
-    .splash-content{flex-direction:column;gap:1rem;}
-    .splash-poster{height:50vh;max-width:85vw;}
-    .splash-text-left,.splash-text-right{flex-direction:row;gap:0.2rem;}
+    .splash-content{gap:0.8rem;}
+    .splash-poster{height:55vh;max-width:55vw;}
+    .splash-text-left span,.splash-text-right span{font-size:1.2rem;}
 }
 .splash-text-left,.splash-text-right{
     display:flex;flex-direction:column;gap:0.3rem;
