@@ -19,6 +19,10 @@ class PesanController extends Controller
 
         Pesan::create($request->only(['nama_lengkap', 'kelas_jurusan', 'kesan_pesan', 'saran', 'kata_untuk_vilova']));
 
+        if($request->ajax()){
+            return response()->json(['success' => true]);
+        }
+
         return redirect('/')->with('success', 'Terima kasih! Pesan kamu sudah terkirim 💌');
     }
 }

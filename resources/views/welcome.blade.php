@@ -641,12 +641,10 @@
             <p class="form-note">* Wajib diisi</p>
         </div>
         <div class="form-right">
-            @if(session('success'))
-            <div class="alert-success">
-                <i class="fas fa-check"></i> {{ session('success') }}
+            <div class="alert-success" id="notif-success" style="display:none">
+                <i class="fas fa-check"></i> Pesan berhasil terkirim! Terima kasih 🙏
             </div>
-            @endif
-            <form action="{{ route('pesan.store') }}" method="POST">
+            <form id="pesan-form" action="{{ route('pesan.store') }}" method="POST">
                 @csrf
                 <div class="field-group">
                     <label>Nama Lengkap *</label>
@@ -700,8 +698,29 @@
     </div>
 </footer>
 
-@if(session('success'))
-<script>document.addEventListener('DOMContentLoaded',()=>document.getElementById('form').scrollIntoView({behavior:'smooth'}));</script>
-@endif
+<script>
+document.getElementById('pesan-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = this;
+    const btn = form.querySelector('.submit-btn');
+    btn.disabled = true;
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {'X-Requested-With': 'XMLHttpRequest'}
+    })
+    .then(r => r.json())
+    .then(data => {
+        if(data.success){
+            form.reset();
+            const notif = document.getElementById('notif-success');
+            notif.style.display = 'flex';
+            setTimeout(() => notif.style.display = 'none', 4000);
+        }
+        btn.disabled = false;
+    })
+    .catch(() => btn.disabled = false);
+});
+</script>
 </body>
 </html>
