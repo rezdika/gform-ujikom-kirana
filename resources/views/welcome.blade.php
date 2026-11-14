@@ -478,11 +478,156 @@
     </div>
 </section>
 
+<!-- KARAKTER -->
+<section id="karakter">
+    <div class="section-header">
+        <span class="section-num">02</span>
+        <div class="section-line"></div>
+        <span class="section-label-text">Character Profiles</span>
+    </div>
+    <div class="section-big-title" style="color:var(--cream)">
+        Meet The<br><em>Characters</em>
+    </div>
+    <div class="karakter-grid">
+
+        <!-- Akbar -->
+        <div class="karakter-card">
+            <div class="karakter-img-wrap">
+                <img src="/assets/image/biodata-karakter/karakter1.jpeg" alt="Akbar">
+                <div class="karakter-badge">01</div>
+            </div>
+            <div class="karakter-body">
+                <h3 class="karakter-name">Dika Akbar</h3>
+                <span class="karakter-nick">"Akbar"</span>
+                <div class="karakter-divider"></div>
+                <div class="karakter-stats">
+                    <div><span>Usia</span><p>20 tahun</p></div>
+                    <div><span>TTL</span><p>Bandung, 31 Okt 2005</p></div>
+                    <div><span>Tinggi</span><p>178 cm</p></div>
+                    <div><span>Berat</span><p>83 kg</p></div>
+                </div>
+                <p class="karakter-desc">Basketball player, fitness enthusiast, dan coder. Selalu begadang buat belajar dan fitness, tapi tetap setia minum kopi tiap pagi. Effort banget ke Kirana.</p>
+                <div class="karakter-tags">
+                    <span>Basketball</span><span>Coding</span><span>Fitness</span><span>Kacamata</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kirana -->
+        <div class="karakter-card karakter-card--center">
+            <div class="karakter-img-wrap">
+                <img src="/assets/image/biodata-karakter/karakter2.jpeg" alt="Kirana">
+                <div class="karakter-badge">02</div>
+            </div>
+            <div class="karakter-body">
+                <h3 class="karakter-name">Kirana Lova</h3>
+                <span class="karakter-nick">"Kirana"</span>
+                <div class="karakter-divider"></div>
+                <div class="karakter-stats">
+                    <div><span>Usia</span><p>17 tahun</p></div>
+                    <div><span>TTL</span><p>Bandung, 4 Sep 2009</p></div>
+                    <div><span>Tinggi</span><p>164 cm</p></div>
+                    <div><span>Berat</span><p>53 kg</p></div>
+                </div>
+                <p class="karakter-desc">Suka menggambar, suka kopi melebihi segalanya — bahkan lebih dari Akbar. Fitness tiap pagi, selalu ngajak hangout, dan jago di semua hal seni.</p>
+                <div class="karakter-tags">
+                    <span>Menggambar</span><span>Design</span><span>Fitness</span><span>Kopi</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Devan -->
+        <div class="karakter-card">
+            <div class="karakter-img-wrap">
+                <img src="/assets/image/biodata-karakter/karakter3.jpeg" alt="Devan">
+                <div class="karakter-badge">03</div>
+            </div>
+            <div class="karakter-body">
+                <h3 class="karakter-name">Tio Devantara</h3>
+                <span class="karakter-nick">"Devan"</span>
+                <div class="karakter-divider"></div>
+                <div class="karakter-stats">
+                    <div><span>Usia</span><p>24 tahun</p></div>
+                    <div><span>TTL</span><p>Bandung, 3 Agt 2002</p></div>
+                    <div><span>Tinggi</span><p>173 cm</p></div>
+                    <div><span>Berat</span><p>79 kg</p></div>
+                </div>
+                <p class="karakter-desc">Barista kece yang selalu ngikutin tren viral. Ramah banget sama semua pengunjung, mahir bikin berbagai kopi. Orang datang ke cafe bukan cuma buat kopinya.</p>
+                <div class="karakter-tags">
+                    <span>Barista</span><span>Kopi</span><span>Piercing</span><span>Tren</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+#karakter{padding:8rem 2rem;background:var(--dark3);position:relative;}
+.karakter-grid{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;align-items:stretch;
+}
+.karakter-card{
+    border:1px solid rgba(177,143,106,0.15);background:var(--dark2);
+    transition:transform 0.3s;display:flex;flex-direction:column;
+}
+.karakter-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;}
+.karakter-card:hover{transform:translateY(-6px);}
+.karakter-card--center{
+    border-color:rgba(177,143,106,0.4);
+    box-shadow:0 0 30px rgba(177,143,106,0.08);
+}
+.karakter-img-wrap{
+    width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;
+}
+.karakter-img-wrap img{
+    width:100%;height:100%;object-fit:cover;object-position:top;
+    transition:transform 0.5s;
+}
+.karakter-card:hover .karakter-img-wrap img{transform:scale(1.04);}
+.karakter-badge{
+    position:absolute;top:1rem;right:1rem;
+    font-family:var(--serif);font-size:2rem;font-weight:700;
+    color:rgba(177,143,106,0.3);line-height:1;
+}
+.karakter-body{padding:1.5rem;}
+.karakter-name{
+    font-family:var(--serif);font-size:1.4rem;font-weight:400;
+    color:var(--cream);margin-bottom:0.3rem;
+}
+.karakter-nick{
+    font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+}
+.karakter-divider{width:30px;height:1px;background:var(--gold);margin:1rem 0;}
+.karakter-stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1rem;
+}
+.karakter-stats div span{
+    font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:rgba(177,143,106,0.5);
+}
+.karakter-stats div p{
+    font-size:0.75rem;color:var(--cream);margin-top:0.2rem;
+}
+.karakter-desc{
+    font-size:0.75rem;line-height:1.8;color:var(--muted);margin-bottom:1rem;
+}
+.karakter-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.karakter-tags span{
+    font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;
+    border:1px solid rgba(177,143,106,0.3);color:var(--gold);
+    padding:0.3rem 0.6rem;
+}
+@media(max-width:768px){
+    .karakter-grid{grid-template-columns:1fr;}
+}
+</style>
+
 <!-- FORM -->
 <section id="form">
     <img src="/assets/image/character/kirana merch.png" class="char char-form" alt="Devan">
     <div class="section-header">
-        <span class="section-num">02</span>
+        <span class="section-num">03</span>
         <div class="section-line"></div>
         <span class="section-label-text">Form Kesan &amp; Pesan</span>
     </div>
