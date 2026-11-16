@@ -70,6 +70,8 @@ class AdminController extends Controller
         $deleted = Pesan::whereNotIn('id', $keep)->delete();
         return back()->with('deleted', $deleted . ' data duplikat berhasil dihapus.');
     }
+
+    public function destroy($id)
     {
         Pesan::findOrFail($id)->delete();
         return back()->with('deleted', 'Pesan berhasil dihapus.');
