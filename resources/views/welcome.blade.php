@@ -396,6 +396,13 @@
     to{opacity:0;pointer-events:none;visibility:hidden;}
 }
 </style>
+<script>
+    if(sessionStorage.getItem('splashShown')){
+        document.getElementById('splash').style.display='none';
+    } else {
+        sessionStorage.setItem('splashShown','1');
+    }
+</script>
 
 <!-- HERO -->
 <section id="hero">
