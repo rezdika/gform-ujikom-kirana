@@ -164,19 +164,7 @@
             display:flex;align-items:center;justify-content:center;
             position:relative;overflow:visible;border:1px solid rgba(177,143,106,0.1);
         }
-        .anim-ring{
-            width:70px;height:70px;border-radius:50%;border:1px solid transparent;
-            border-top-color:var(--gold);border-right-color:rgba(177,143,106,0.3);
-            animation:spin 3s linear infinite;position:absolute;
-        }
-        .anim-ring:nth-child(2){
-            width:45px;height:45px;border-top-color:var(--gold-light);
-            animation:spin 2s linear infinite reverse;
-        }
-        .anim-center-dot{
-            width:6px;height:6px;background:var(--gold);border-radius:50%;
-            position:absolute;animation:pulse 2s ease-in-out infinite;
-        }
+        .anim-stage video{width:100%;height:100%;object-fit:contain;display:block;position:relative;z-index:1;}
         .char-stage{
             position:absolute;
             top:-115px;
@@ -206,8 +194,6 @@
             gap:0.5rem;transition:color 0.3s;border-bottom:1px solid transparent;padding-bottom:2px;
         }
         .socials-row a:hover{color:var(--gold);border-bottom-color:var(--gold);}
-
-        /* ── FORM ── */
         #form{padding:8rem 2rem;background:var(--cream);position:relative;}
         #form::before{
             content:'03';position:absolute;top:4rem;right:3rem;
@@ -463,10 +449,9 @@
             <div class="showcase-box">
                 <p class="showcase-label">Animation Showcase</p>
                 <div class="anim-stage">
-                    <div class="anim-ring"></div>
-                    <div class="anim-ring"></div>
-                    <div class="anim-center-dot"></div>
-                    <p class="anim-text-overlay">KVlov Animation Studio</p>
+                    <video controls preload="metadata" poster="/assets/image/poster/postermwcoffee.webp" playsinline webkit-playsinline style="width:100%;height:100%;object-fit:contain;display:block;">
+                        <source src="/assets/vidio/animasi.mp4" type="video/mp4">
+                    </video>
                     <img src="/assets/image/character/akbar merch.png" class="char-stage" alt="Akbar">
                 </div>
             </div>
@@ -623,6 +608,7 @@
 }
 </style>
 
+<!-- VIDEO section dihapus, video dipindah ke showcase box -->
 <!-- FORM -->
 <section id="form">
     <img src="/assets/image/character/kirana merch.png" class="char char-form" alt="Devan">
