@@ -628,10 +628,12 @@
             <p class="form-note">* Wajib diisi</p>
         </div>
         <div class="form-right">
-            <div class="alert-success" id="notif-success" style="display:none">
-                <i class="fas fa-check"></i> Pesan berhasil terkirim! Terima kasih 🙏
+            @if(session('success'))
+            <div class="alert-success">
+                <i class="fas fa-check"></i> {{ session('success') }}
             </div>
-            <form id="pesan-form" action="{{ route('pesan.store') }}" method="POST">
+            @endif
+            <form action="{{ route('pesan.store') }}" method="POST">
                 @csrf
                 <div class="field-group">
                     <label>Nama Lengkap *</label>
@@ -685,40 +687,8 @@
     </div>
 </footer>
 
-<script>
-document.getElementById('pesan-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    const form = this;
-    const btn = form.querySelector('.submit-btn');
-    btn.disabled = true;
-    const data = new FormData(form);
-    fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers:{
-            'X-Requested-With': 'XMLHttpRequest',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        }
-    })
-    .then(r => {
-        if(r.status === 419){
-            window.location.reload();
-            return;
-        }
-        return r.json();
-    })
-    .then(data => {
-        if(!data) return;
-        if(data.success){
-            form.reset();
-            const notif = document.getElementById('notif-success');
-            notif.style.display = 'flex';
-            setTimeout(() => notif.style.display = 'none', 4000);
-        }
-        btn.disabled = false;
-    })
-    .catch(() => { btn.disabled = false; form.submit(); });
-});
-</script>
+@if(session('success'))
+<script>document.addEventListener('DOMContentLoaded',()=>document.getElementById('form').scrollIntoView({behavior:'smooth'}));</script>
+@endif
 </body>
 </html>
