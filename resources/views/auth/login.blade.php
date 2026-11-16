@@ -128,7 +128,7 @@
             @if($errors->any())
             <div class="error-box"><i class="fas fa-exclamation-circle"></i> {{ $errors->first() }}</div>
             @endif
-            <form method="POST" action="/login">
+            <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="field">
                     <label>Email</label>
