@@ -62,7 +62,14 @@ class AdminController extends Controller
         return view('admin.statistik', compact('perHari','denganSaran','tanpaSaran','perKelas'));
     }
 
-    public function destroy($id)
+    public function destroyDuplikat()
+    {
+        $keep = Pesan::selectRaw('MIN(id) as id')
+            ->groupBy('nama_lengkap', 'kesan_pesan')
+            ->pluck('id');
+        $deleted = Pesan::whereNotIn('id', $keep)->delete();
+        return back()->with('deleted', $deleted . ' data duplikat berhasil dihapus.');
+    }
     {
         Pesan::findOrFail($id)->delete();
         return back()->with('deleted', 'Pesan berhasil dihapus.');

@@ -331,6 +331,13 @@
         <div class="alert-deleted"><i class="fas fa-trash"></i> {{ session('deleted') }}</div>
         @endif
 
+        <form method="POST" action="{{ route('admin.pesan.duplikat') }}" onsubmit="return confirm('Hapus semua data duplikat? Data pertama dari setiap nama akan dipertahankan.')" style="margin-bottom:1.5rem;">
+            @csrf @method('DELETE')
+            <button type="submit" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-family:var(--sans);font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;padding:0.7rem 1.5rem;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.background='rgba(201,168,76,0.1)'" onmouseout="this.style.background='transparent'">
+                <i class="fas fa-broom"></i> &nbsp;Hapus Duplikat
+            </button>
+        </form>
+
         @if($pesan->isEmpty())
         <div class="empty-state">
             <i class="fas fa-inbox"></i>

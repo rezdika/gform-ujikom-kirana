@@ -16,4 +16,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/statistik', [AdminController::class, 'statistik'])->name('admin.statistik');
     Route::delete('/admin/pesan/{id}', [AdminController::class, 'destroy'])->name('admin.pesan.destroy');
+    Route::delete('/admin/pesan-duplikat', [AdminController::class, 'destroyDuplikat'])->name('admin.pesan.duplikat');
 });
