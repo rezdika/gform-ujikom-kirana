@@ -700,8 +700,15 @@ document.getElementById('pesan-form').addEventListener('submit', function(e){
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
         }
     })
-    .then(r => r.json())
+    .then(r => {
+        if(r.status === 419){
+            window.location.reload();
+            return;
+        }
+        return r.json();
+    })
     .then(data => {
+        if(!data) return;
         if(data.success){
             form.reset();
             const notif = document.getElementById('notif-success');
