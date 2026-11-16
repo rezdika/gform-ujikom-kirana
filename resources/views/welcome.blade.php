@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>KVlov Experience & Feedback</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -690,10 +691,14 @@ document.getElementById('pesan-form').addEventListener('submit', function(e){
     const form = this;
     const btn = form.querySelector('.submit-btn');
     btn.disabled = true;
+    const data = new FormData(form);
     fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
-        headers: {'X-Requested-With': 'XMLHttpRequest'}
+        body: data,
+        headers:{
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        }
     })
     .then(r => r.json())
     .then(data => {
@@ -705,7 +710,7 @@ document.getElementById('pesan-form').addEventListener('submit', function(e){
         }
         btn.disabled = false;
     })
-    .catch(() => btn.disabled = false);
+    .catch(() => { btn.disabled = false; form.submit(); });
 });
 </script>
 </body>
